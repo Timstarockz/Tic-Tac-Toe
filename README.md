@@ -5,10 +5,7 @@ Tic-Tac-Toe game made with Mathematica/the Wolfram Language. The AI uses the Min
 
 Code
 =========
-	listChildren[board_, player_] := 
-	 listChildren[board, player] = 
-	  ReplaceList[
-	   board, {a___, {x___, 0, y___}, b___} :> {a, {x, player, y}, b}]
+	listChildren[board_, player_] := listChildren[board, player] = ReplaceList[board, {a___, {x___, 0, y___}, b___} :> {a, {x, player, y}, b}]
 	score[board_] := With[{
 	   score = {
 	       Total /@ #,
@@ -25,7 +22,8 @@ Code
 	  ]
 	nextMove[oldBoard_] :=
 	 If[
-	  score[oldBoard] != 0 || ! MemberQ[oldBoard, 0, 2], oldBoard,
+	  score[oldBoard] != 0 || ! MemberQ[oldBoard, 0, 2], 
+	  oldBoard,
 	  Part[
 	   listChildren[oldBoard, 1],
 	   Last@Ordering[
@@ -81,10 +79,7 @@ Code
 	    renderBoard[currentBoard], 
 	    If[score[currentBoard] != 0 || ! MemberQ[currentBoard, 0, 2], 
 	     Pane[Column[{
-	        Button["Go first", 
-	         currentBoard = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}],
-	        Button["Go second", 
-	         currentBoard = {{1, 0, 0}, {0, 0, 0}, {0, 0, 0}}]
+	        Button["Go first", currentBoard = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}],
+	        Button["Go second", currentBoard = {{1, 0, 0}, {0, 0, 0}, {0, 0, 0}}]
 	        }], ImageMargins -> 155], ## &[]]
-	    }, {1, 2}, 
-	   If[score[currentBoard] != 0 || ! MemberQ[currentBoard, 0, 2], 2, 1]]
+	    }, {1, 2}, If[score[currentBoard] != 0 || ! MemberQ[currentBoard, 0, 2], 2, 1]]
