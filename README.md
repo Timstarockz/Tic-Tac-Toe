@@ -3,6 +3,11 @@ Tic-Tac-Toe
 
 Tic-Tac-Toe game made with Mathematica/the Wolfram Language. The AI uses the Minimax algorithm, so it's unbeatable. Alpha-beta pruning makes it fast.
 
+Output
+==========
+
+<img src="https://dl.dropboxusercontent.com/u/2736911/tictactoe.gif" alt="Output in a Mathematica notebook" title="Playing a few games against the AI..." />
+
 Code
 =========
 	listChildren[board_, player_] := listChildren[board, player] = ReplaceList[board, {a___, {x___, 0, y___}, b___} :> {a, {x, player, y}, b}]
